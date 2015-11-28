@@ -25,27 +25,27 @@ start:
     ; Load dependencies
     kld(de, corelibPath)
     pcall(loadLibrary)
-    ld hl, 0x0000
+    ld hl, 0x0000 ;initial starting number
 _:  push hl
         kld(hl, windowTitle)
-        xor a
+        xor a ; xors a to itself, basically setting to 0, used by drawWindow
         corelib(drawWindow)
 
-        ld b, 2
-        ld de, 0x0208
-        kld(hl, helloString)
+        ld b, 2 ; left-margin for drawStr
+        ld de, 0x0208 ; x,y for drawStr
+        kld(hl, helloString) ; drawStr uses HL
         pcall(drawStr)
     pop hl
     
     inc hl
-    ld de, 0x0210
+    ld de, 0x0210 ; x,y
     pcall(drawDecHL)
 
     pcall(fastCopy)
-    corelib(appGetKey)
+    corelib(appGetKey) ; loads A with the pressed key
 
-    cp kMode
-    jr nz, -_
+    cp kMode ; cp subtracts from A
+    jr nz, -_ ; if A isn't zero, go to the label specified (if key == kMode) exit()
     ret
 
 helloString:
