@@ -1,0 +1,5 @@
+.knightos/
+bin/
+*.pkg
+.DS_Store
+count/.DS_Store
