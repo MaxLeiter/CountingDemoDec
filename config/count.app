@@ -1,3 +1,3 @@
-name=Counting Demo
-icon=/share/icons/demos.img
+name=Counting Demo Hex
+icon=/share/icons/count.img
 exec=/bin/count
