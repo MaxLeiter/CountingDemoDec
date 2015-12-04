@@ -1,6 +1,5 @@
 include .knightos/variables.make
 
-INIT=/bin/fileman
 
 ALL_TARGETS:=$(BIN)count \
 	$(APPS)count.app \
